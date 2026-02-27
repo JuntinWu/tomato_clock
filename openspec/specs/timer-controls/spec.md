@@ -1,23 +1,23 @@
-### Requirement: Start Countdown
-The application MUST allow the user to start the timer countdown from the currently selected mode's full duration.
+### Requirement: 開始倒數
+應用程式必須允許使用者從目前所選模式的完整時長開始計時倒數。
 
-#### Scenario: User starts the timer
-- **WHEN** the user clicks the "Start" button
-- **THEN** the timer begins counting down by 1 second every second
-- **THEN** the progress ring updates visually to reflect the remaining time
+#### Scenario: 使用者啟動計時器
+- **WHEN** 使用者點擊「開始」按鈕
+- **THEN** 計時器每秒倒數一次開始運作
+- **THEN** 進度環以視覺方式更新，反映剩餘時間
 
-### Requirement: Pause Countdown
-The application MUST allow the user to pause a running timer, holding its current remaining time until resumed.
+### 需求：暫停倒數
+應用程式必須允許使用者暫停執行中的計時器，並保留當前剩餘時間，直到恢復計時。
 
-#### Scenario: User pauses the timer
-- **WHEN** the user clicks the "Pause" button while the timer is running
-- **THEN** the countdown stops
-- **THEN** the current remaining time is preserved on the display
+#### Scenario: 使用者暫停計時器
+- **WHEN** 使用者在計時器運作中點擊「暫停」按鈕
+- **THEN** 倒數停止
+- **THEN** 目前剩餘時間保留並顯示於畫面上
 
-### Requirement: Reset Timer
-The application MUST allow the user to reset the timer back to its initial value for the currently selected mode.
+### 需求：重設計時器
+應用程式必須允許使用者將計時器重設回目前所選模式的初始時長。
 
-#### Scenario: User resets the timer
-- **WHEN** the user clicks the "Reset" button
-- **THEN** the timer stops running
-- **THEN** the timer display reverts to the full duration of the active mode (e.g. 25:00)
+#### Scenario: 使用者重設計時器
+- **WHEN** 使用者點擊「重設」按鈕
+- **THEN** 計時器停止運作
+- **THEN** 計時器顯示恢復為目前模式的完整時長（例如 25:00）

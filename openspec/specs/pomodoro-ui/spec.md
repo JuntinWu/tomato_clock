@@ -1,34 +1,34 @@
-### Requirement: Circular Timer Component
-The application MUST display a large circular progress ring with a countdown timer text in the center, and a status subtitle below it. The component receives the dynamic formatted time text and a `progress` value (between 0 and 1) via props. The SVG progress ring MUST visually animate its `stroke-dashoffset` to accurately reflect the `progress` value over time. The progress ring MUST feature rounded stroke caps for a polished appearance.
+### Requirement: 圓形計時器元件
+應用程式必須在畫面中顯示一個大型圓形進度環，中央呈現倒數計時文字，並在其下方顯示狀態副標題。元件透過 props 接收動態格式化的時間文字，以及介於 0 至 1 之間的 `progress` 進度值。SVG 進度環必須透過動畫方式更新 `stroke-dashoffset`，以精確反映當前進度數值的變化。進度環筆觸端點必須為圓角，以呈現精緻的視覺效果。
 
-#### Scenario: User views the timer counting down
-- **WHEN** the timer is running and the `progress` prop updates
-- **THEN** the circular timer's ring smoothly animates to show the correct proportion of elapsed time.
-- **THEN** the progress indicator stroke has visually rounded ends.
+#### Scenario: 使用者查看倒數中的計時器
+- **WHEN** 計時器運作中，且 `progress` prop 更新時
+- **THEN** 圓形計時器的進度環以動畫方式流暢地顯示剩餘時間的比例。
+- **THEN** 進度環筆觸的端點呈現圓角外觀。
 
-### Requirement: Control Buttons Component
-The application MUST display a row of primary action buttons (Start, Pause, Reset) and an Auto/Manual toggle switch below them. The component receives callback functions via props (`onStart`, `onPause`, `onReset`) to trigger the respective actions.
+### 需求：控制按鈕元件
+應用程式必須顯示一排主要操作按鈕（開始、暫停、重設），以及其下方的自動／手動切換開關。元件透過 props 接收對應的回呼函式（`onStart`、`onPause`、`onReset`）以觸發各項操作。
 
-#### Scenario: User views the controls
-- **WHEN** the application loads
-- **THEN** the Start, Pause, and Reset buttons are displayed within a card container, alongside the auto/manual toggle.
+#### Scenario: 使用者查看控制區域
+- **WHEN** 應用程式載入時
+- **THEN** 開始、暫停與重設按鈕顯示於卡片容器內，並附有自動／手動切換開關。
 
-### Requirement: Settings Gear Button
-The application MUST display a gear icon button (⚙️) in the header area that opens the timer settings dialog when clicked.
+### 需求：設定齒輪按鈕
+應用程式必須在標題區域顯示一個齒輪圖示按鈕（⚙️），點擊後可開啟計時器設定對話框。
 
-#### Scenario: User sees the settings button
-- **WHEN** the application loads
-- **THEN** a gear icon button is visible in the top-right area of the header.
+#### Scenario: 使用者看到設定按鈕
+- **WHEN** 應用程式載入時
+- **THEN** 一個齒輪圖示按鈕顯示於標題列右上方區域。
 
-### Requirement: Progress Tracker Component
-The application MUST display a progress tracker component that visualizes the user's progress through a standard Pomodoro cycle (4 focus sessions followed by a long break). The component MUST dynamically display the number of completed focus sessions and highlight the corresponding number of progress dots.
+### 需求：進度追蹤元件
+應用程式必須顯示進度追蹤元件，以視覺方式呈現使用者在標準番茄鐘週期（4 個專注時段後接一次長休息）中的進展。元件必須動態顯示已完成的專注時段數量，並點亮對應數量的進度圓點。
 
-#### Scenario: User views initial progress
-- **WHEN** the user has completed 0 focus sessions
-- **THEN** the text reads "已完成 0/4 個專注時段，下一次長休息在第 4 回合"
-- **THEN** 0 out of 4 progress dots are highlighted (active color).
+#### Scenario: 使用者查看初始進度
+- **WHEN** 使用者已完成 0 個專注時段
+- **THEN** 文字顯示「已完成 0/4 個專注時段，下一次長休息在第 4 回合」
+- **THEN** 4 個進度圓點中有 0 個被點亮（啟用顏色）。
 
-#### Scenario: User completes 2 focus sessions
-- **WHEN** the user has completed 2 focus sessions
-- **THEN** the text reads "已完成 2/4 個專注時段，下一次長休息在第 2 回合"
-- **THEN** 2 out of 4 progress dots are highlighted (active color), and the remaining 2 are inactive.
+#### Scenario: 使用者完成 2 個專注時段
+- **WHEN** 使用者已完成 2 個專注時段
+- **THEN** 文字顯示「已完成 2/4 個專注時段，下一次長休息在第 2 回合」
+- **THEN** 4 個進度圓點中有 2 個被點亮（啟用顏色），其餘 2 個為未啟用狀態。

@@ -1,17 +1,17 @@
-### Requirement: Timer Mode State
-The application MUST maintain the currently active timer mode (Focus, Short Break, Long Break) and update the active time display according to the user's custom timer duration settings. When no custom settings have been applied, the default durations (Focus: 25m, Short Break: 5m, Long Break: 15m) MUST be used. Switching modes MUST reset any currently running or paused timer to the new mode's full duration.
+### Requirement: 計時器模式狀態
+應用程式必須維護目前啟用的計時器模式（專注、短休息、長休息），並依照使用者的自訂時長設定更新顯示的時間。若使用者尚未套用自訂設定，則必須使用預設時長（專注：25 分鐘、短休息：5 分鐘、長休息：15 分鐘）。切換模式時，必須將任何執行中或暫停中的計時器重設為新模式的完整時長。
 
-#### Scenario: User switches to Short Break mode
-- **WHEN** the user clicks the "Short Break" button
-- **THEN** the active mode is updated to "Short Break"
-- **THEN** the timer stops running, and the display updates to show the currently configured Short Break duration.
+#### Scenario: 使用者切換至短休息模式
+- **WHEN** 使用者點擊「短休息」按鈕
+- **THEN** 目前模式更新為「短休息」
+- **THEN** 計時器停止運作，顯示畫面更新為目前設定的短休息時長。
 
-#### Scenario: User switches to Long Break mode
-- **WHEN** the user clicks the "Long Break" button
-- **THEN** the active mode is updated to "Long Break"
-- **THEN** the timer stops running, and the display updates to show the currently configured Long Break duration.
+#### Scenario: 使用者切換至長休息模式
+- **WHEN** 使用者點擊「長休息」按鈕
+- **THEN** 目前模式更新為「長休息」
+- **THEN** 計時器停止運作，顯示畫面更新為目前設定的長休息時長。
 
-#### Scenario: User switches to Focus mode
-- **WHEN** the user clicks the "Focus" button
-- **THEN** the active mode is updated to "Focus"
-- **THEN** the timer stops running, and the display updates to show the currently configured Focus duration.
+#### Scenario: 使用者切換至專注模式
+- **WHEN** 使用者點擊「專注」按鈕
+- **THEN** 目前模式更新為「專注」
+- **THEN** 計時器停止運作，顯示畫面更新為目前設定的專注時長。

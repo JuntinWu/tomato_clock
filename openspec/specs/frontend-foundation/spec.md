@@ -1,22 +1,22 @@
-## ADDED Requirements
+## 新增需求
 
-### Requirement: React and Vite Setup
-The project MUST be initialized using Vite with the React and TypeScript template.
+### Requirement: React 與 Vite 基礎設置
+專案必須使用 Vite 搭配 React 與 TypeScript 範本進行初始化。
 
-#### Scenario: Developer starts the project
-- **WHEN** the developer runs `npm run dev`
-- **THEN** the Vite development server starts successfully and renders the default React app.
+#### Scenario: 開發者啟動專案
+- **WHEN** 開發者執行 `npm run dev`
+- **THEN** Vite 開發伺服器成功啟動，並渲染預設的 React 應用程式。
 
-### Requirement: Code Quality Tools
-The project MUST include ESLint for code formatting and linting.
+### 需求：程式碼品質工具
+專案必須包含 ESLint，用於程式碼格式化與靜態分析。
 
-#### Scenario: Developer lints code
-- **WHEN** the developer runs `npm run lint`
-- **THEN** ESLint checks the codebase and reports any programmatic or stylistic errors.
+#### Scenario: 開發者執行程式碼檢查
+- **WHEN** 開發者執行 `npm run lint`
+- **THEN** ESLint 掃描整個程式碼庫，並回報任何程式邏輯或風格上的錯誤。
 
-### Requirement: UI Foundation
-The project MUST include Tailwind CSS and shadcn ui initialized for building components.
+### 需求：UI 基礎框架
+專案必須包含 Tailwind CSS，並完成 shadcn/ui 的初始化設定，以供元件開發使用。
 
-#### Scenario: Developer uses shadcn components
-- **WHEN** the developer imports a shadcn component
-- **THEN** the component renders correctly with the default shadcn styling and Tailwind utility classes.
+#### Scenario: 開發者使用 shadcn 元件
+- **WHEN** 開發者匯入 shadcn 元件
+- **THEN** 該元件以預設的 shadcn 樣式及 Tailwind 工具類別正確渲染。

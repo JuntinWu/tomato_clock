@@ -1,15 +1,15 @@
-### Requirement: Timer Settings Dialog
-The application MUST provide a settings dialog where users can customize the duration of Focus, Short Break, and Long Break sessions using slider controls.
+### Requirement: 計時器設定對話框
+應用程式必須提供設定對話框，讓使用者透過滑桿控制項自訂專注、短休息與長休息的時段長度。
 
-#### Scenario: User opens the settings dialog
-- **WHEN** the user clicks the gear (⚙️) button in the header
-- **THEN** a centered modal dialog appears with a semi-transparent backdrop overlay.
+#### Scenario: 使用者開啟設定對話框
+- **WHEN** 使用者點擊標題列的齒輪（⚙️）按鈕
+- **THEN** 畫面中央出現帶有半透明遮罩背景的對話框
 
-#### Scenario: User adjusts Focus duration via slider
-- **WHEN** the user drags the Focus slider to 50 minutes and clicks Save
-- **THEN** the Focus timer duration is updated to 50 minutes
-- **THEN** the timer resets and pauses to reflect the new duration.
+#### Scenario: 使用者透過滑桿調整專注時長
+- **WHEN** 使用者將專注時段滑桿拖曳至 50 分鐘並點擊儲存
+- **THEN** 專注計時器時長更新為 50 分鐘
+- **THEN** 計時器重設並暫停，以反映新的時長設定。
 
-#### Scenario: User closes settings without saving
-- **WHEN** the user clicks the backdrop or the close button without clicking Save
-- **THEN** the dialog closes and no changes are applied to the timer durations.
+#### Scenario: 使用者關閉設定而不儲存
+- **WHEN** 使用者點擊遮罩背景或關閉按鈕，而未點擊儲存
+- **THEN** 對話框關閉，計時器時長不做任何變更。
