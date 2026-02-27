@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import "./App.css"
 import { ModeSelector, type Mode } from "@/components/ModeSelector"
 import { TimerDisplay } from "@/components/TimerDisplay"
@@ -24,11 +24,40 @@ function formatTime(seconds: number): string {
 }
 
 function App() {
-  const [activeMode, setActiveMode] = useState<Mode>('focus');
+  const [activeMode, setActiveModeState] = useState<Mode>('focus');
+  const [timeRemaining, setTimeRemaining] = useState(MODE_DURATIONS['focus']);
+  const [isRunning, setIsRunning] = useState(false);
+
+  // Custom handler to switch modes
+  const setActiveMode = (mode: Mode) => {
+    setActiveModeState(mode);
+    setTimeRemaining(MODE_DURATIONS[mode]);
+    setIsRunning(false);
+  };
+
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    if (isRunning && timeRemaining > 0) {
+      interval = setInterval(() => {
+        setTimeRemaining((prev) => prev - 1);
+      }, 1000);
+    } else if (timeRemaining === 0) {
+      setIsRunning(false);
+    }
+    return () => clearInterval(interval);
+  }, [isRunning, timeRemaining]);
+
+  const handleStart = () => setIsRunning(true);
+  const handlePause = () => setIsRunning(false);
+  const handleReset = () => {
+    setIsRunning(false);
+    setTimeRemaining(MODE_DURATIONS[activeMode]);
+  };
   
   // Derived state for the timer display
-  const timeFormatted = formatTime(MODE_DURATIONS[activeMode]);
+  const timeFormatted = formatTime(timeRemaining);
   const statusText = `目前階段：${MODE_LABELS[activeMode]}`;
+  const progress = timeRemaining / MODE_DURATIONS[activeMode];
 
   return (
     <div className="min-h-screen bg-[#0B0B0E] text-[#FAFAF9] flex flex-col font-sans">
@@ -43,11 +72,16 @@ function App() {
         </section>
 
         <section className="timer-wrapper w-full">
-          <TimerDisplay timeFormatted={timeFormatted} statusText={statusText} />
+          <TimerDisplay timeFormatted={timeFormatted} statusText={statusText} progress={progress} />
         </section>
 
         <section className="controls-wrapper w-full">
-          <Controls />
+          <Controls 
+            onStart={handleStart} 
+            onPause={handlePause} 
+            onReset={handleReset} 
+            isRunning={isRunning} 
+          />
         </section>
 
         <section className="tracker-wrapper w-full mt-4">

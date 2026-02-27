@@ -1,23 +1,29 @@
 interface TimerDisplayProps {
   timeFormatted: string;
   statusText: string;
+  progress: number;
 }
 
-export function TimerDisplay({ timeFormatted, statusText }: TimerDisplayProps) {
+export function TimerDisplay({ timeFormatted, statusText, progress }: TimerDisplayProps) {
+  const radius = 99;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - progress * circumference;
+
   return (
     <div className="bg-[#16161A] rounded-2xl pt-8 pb-6 px-6 w-[354px] flex flex-col items-center justify-center gap-3 mx-auto mt-4">
       <div className="relative w-[210px] h-[210px] flex items-center justify-center">
         {/* SVG Ring Background */}
-        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 210 210">
+        <svg className="absolute inset-0 w-full h-full -rotate-90 origin-center" viewBox="0 0 210 210">
           <circle
             cx="105"
             cy="105"
-            r="99"
+            r={radius}
             fill="#E85A4F20"
             stroke="#E85A4F"
             strokeWidth="12"
-            strokeDasharray="622"
-            strokeDashoffset="0"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeDashoffset}
             className="transition-all duration-1000 ease-linear"
           />
         </svg>

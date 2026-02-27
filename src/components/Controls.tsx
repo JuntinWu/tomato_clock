@@ -1,18 +1,40 @@
 import { useState } from 'react';
 
-export function Controls() {
+interface ControlsProps {
+  onStart: () => void;
+  onPause: () => void;
+  onReset: () => void;
+  isRunning: boolean;
+}
+
+export function Controls({ onStart, onPause, onReset, isRunning }: ControlsProps) {
   const [isAuto, setIsAuto] = useState(true);
 
   return (
     <div className="bg-[#16161A] rounded-2xl p-[14px] w-[354px] flex flex-col gap-2.5 mx-auto mt-4">
       <div className="flex gap-2 h-11 w-full flex-row">
-        <button className="flex-[3] flex items-center justify-center rounded-xl bg-[#E85A4F] text-white transition-colors">
+        <button 
+          onClick={onStart}
+          disabled={isRunning}
+          className={`flex-[3] flex items-center justify-center rounded-xl transition-colors ${
+            isRunning ? 'bg-[#1A1A1E] text-[#6B6B70] cursor-not-allowed' : 'bg-[#E85A4F] text-white'
+          }`}
+        >
           <span className="font-sans text-[13px] font-semibold">開始</span>
         </button>
-        <button className="flex-[2] flex items-center justify-center rounded-xl bg-[#1A1A1E] text-[#FAFAF9] transition-colors">
+        <button 
+          onClick={onPause}
+          disabled={!isRunning}
+          className={`flex-[2] flex items-center justify-center rounded-xl transition-colors ${
+            !isRunning ? 'bg-[#1A1A1E] text-[#6B6B70] cursor-not-allowed' : 'bg-[#1A1A1E] text-white hover:bg-[#2A2A2E]'
+          }`}
+        >
           <span className="font-sans text-[13px] font-medium">暫停</span>
         </button>
-        <button className="flex-[2] flex items-center justify-center rounded-xl bg-[#1A1A1E] text-[#FAFAF9] transition-colors">
+        <button 
+          onClick={onReset}
+          className="flex-[2] flex items-center justify-center rounded-xl bg-[#1A1A1E] text-[#FAFAF9] hover:bg-[#2A2A2E] transition-colors"
+        >
           <span className="font-sans text-[13px] font-medium">重置</span>
         </button>
       </div>
