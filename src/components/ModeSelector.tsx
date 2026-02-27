@@ -1,11 +1,18 @@
+import type { Durations } from "@/types";
+
 export type Mode = 'focus' | 'shortBreak' | 'longBreak';
 
 interface ModeSelectorProps {
   activeMode: Mode;
   onChange: (mode: Mode) => void;
+  durations: Durations;
 }
 
-export function ModeSelector({ activeMode, onChange }: ModeSelectorProps) {
+export function ModeSelector({ activeMode, onChange, durations }: ModeSelectorProps) {
+  const focusMin = Math.round(durations.focus / 60);
+  const shortMin = Math.round(durations.shortBreak / 60);
+  const longMin = Math.round(durations.longBreak / 60);
+
   return (
     <div className="bg-[#16161A] rounded-2xl p-3.5 w-[354px] flex flex-col gap-2.5 mx-auto">
       <div className="flex gap-2 h-12 w-full">
@@ -15,7 +22,7 @@ export function ModeSelector({ activeMode, onChange }: ModeSelectorProps) {
             activeMode === 'focus' ? 'bg-[#E85A4F] text-white' : 'bg-[#1A1A1E] text-[#FAFAF9]'
           }`}
         >
-          <span className="font-sans text-[13px] font-semibold">專注 25m</span>
+          <span className="font-sans text-[13px] font-semibold">專注 {focusMin}m</span>
         </button>
         <button
           onClick={() => onChange('shortBreak')}
@@ -23,7 +30,7 @@ export function ModeSelector({ activeMode, onChange }: ModeSelectorProps) {
             activeMode === 'shortBreak' ? 'bg-[#E85A4F] text-white' : 'bg-[#1A1A1E] text-[#FAFAF9]'
           }`}
         >
-          <span className="font-sans text-[13px] font-medium">短休 5m</span>
+          <span className="font-sans text-[13px] font-medium">短休 {shortMin}m</span>
         </button>
         <button
           onClick={() => onChange('longBreak')}
@@ -31,7 +38,7 @@ export function ModeSelector({ activeMode, onChange }: ModeSelectorProps) {
             activeMode === 'longBreak' ? 'bg-[#E85A4F] text-white' : 'bg-[#1A1A1E] text-[#FAFAF9]'
           }`}
         >
-          <span className="font-sans text-[13px] font-medium">長休 15m</span>
+          <span className="font-sans text-[13px] font-medium">長休 {longMin}m</span>
         </button>
       </div>
     </div>
