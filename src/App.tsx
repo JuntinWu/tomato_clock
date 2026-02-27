@@ -27,6 +27,7 @@ function App() {
   const [activeMode, setActiveModeState] = useState<Mode>('focus');
   const [timeRemaining, setTimeRemaining] = useState(MODE_DURATIONS['focus']);
   const [isRunning, setIsRunning] = useState(false);
+  const [completedCycles, setCompletedCycles] = useState(0);
 
   // Custom handler to switch modes
   const setActiveMode = (mode: Mode) => {
@@ -41,11 +42,14 @@ function App() {
       interval = setInterval(() => {
         setTimeRemaining((prev) => prev - 1);
       }, 1000);
-    } else if (timeRemaining === 0) {
+    } else if (timeRemaining === 0 && isRunning) {
+      if (activeMode === 'focus') {
+        setCompletedCycles((c) => c + 1);
+      }
       setIsRunning(false);
     }
     return () => clearInterval(interval);
-  }, [isRunning, timeRemaining]);
+  }, [isRunning, timeRemaining, activeMode]);
 
   const handleStart = () => setIsRunning(true);
   const handlePause = () => setIsRunning(false);
@@ -85,7 +89,7 @@ function App() {
         </section>
 
         <section className="tracker-wrapper w-full mt-4">
-          <ProgressTracker />
+          <ProgressTracker completedCycles={completedCycles} />
         </section>
       </main>
     </div>
