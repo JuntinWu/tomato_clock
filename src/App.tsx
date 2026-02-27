@@ -1,31 +1,32 @@
 import "./App.css"
+import { ModeSelector } from "@/components/ModeSelector"
+import { TimerDisplay } from "@/components/TimerDisplay"
+import { Controls } from "@/components/Controls"
+import { ProgressTracker } from "@/components/ProgressTracker"
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
-      <header className="px-6 py-4 flex items-center justify-center border-b border-border/50">
-        <h1 className="text-2xl font-serif font-medium tracking-tight">Focus Timer</h1>
+    <div className="min-h-screen bg-[#0B0B0E] text-[#FAFAF9] flex flex-col font-sans">
+      <header className="pt-10 px-6 flex items-center justify-center">
+        <h1 className="text-[28px] font-sans font-semibold tracking-[-0.8px] text-[#FAFAF9]">Focus Timer</h1>
       </header>
 
-      <main className="flex-1 p-6 max-w-sm mx-auto w-full flex flex-col gap-6">
+      <main className="flex-1 w-full flex flex-col pt-3 pb-8">
         {/* Basic structure for the components to drop in */}
-        <section className="modes-wrapper flex flex-col gap-4">
-          <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase hidden">Modes</h2>
-          <div className="bg-card rounded-2xl p-4 w-full">
-             <p className="text-center font-serif text-muted-foreground">Mode Cards Here</p>
-          </div>
+        <section className="modes-wrapper w-full">
+          <ModeSelector />
         </section>
 
-        <section className="timer-wrapper mt-4">
-          <div className="bg-card rounded-2xl p-8 w-full min-h-64 flex items-center justify-center">
-             <p className="text-center font-serif text-muted-foreground">Timer Circular Progress Here</p>
-          </div>
+        <section className="timer-wrapper w-full">
+          <TimerDisplay />
         </section>
 
-        <section className="controls-wrapper mt-4">
-          <div className="bg-card rounded-2xl p-4 w-full min-h-32 flex items-center justify-center">
-             <p className="text-center font-serif text-muted-foreground">Controls Here</p>
-          </div>
+        <section className="controls-wrapper w-full">
+          <Controls />
+        </section>
+
+        <section className="tracker-wrapper w-full mt-4">
+          <ProgressTracker />
         </section>
       </main>
     </div>
